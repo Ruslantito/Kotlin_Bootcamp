@@ -1,17 +1,21 @@
 package com.example.newgame
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.random.Random
-
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var levelValueTextView: TextView? = null
@@ -23,18 +27,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var btnStart: androidx.appcompat.widget.AppCompatButton? = null
     private var levelValue: Int = 0
     private var recordValue: Int = 0
-    private var levelIsPassed: Boolean = true
     private var userTurn: Boolean = false
-    private var questionList: List<Int> = listOf()
+    private var questionList: MutableList<Int> = mutableListOf()
     private var answerList: MutableList<Int> = mutableListOf()
+    private var sounds: List<MediaPlayer> = listOf()
 
-
-    enum class Sounds(val v: Int) {
-        SOUND1(R.raw.sound1),
-        SOUND2(R.raw.sound2),
-        SOUND3(R.raw.sound3),
-        SOUND4(R.raw.sound4),
-    }
+    private lateinit var pref: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+    private val prefKey = "record"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +62,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn4?.setOnClickListener(this)
         btnStart?.setOnClickListener(this)
 
+        sounds = listOf(
+            MediaPlayer.create(this, R.raw.sound1),
+            MediaPlayer.create(this, R.raw.sound2),
+            MediaPlayer.create(this, R.raw.sound3),
+            MediaPlayer.create(this, R.raw.sound4)
+        )
+
+        pref = getSharedPreferences("Storage", MODE_PRIVATE)
+        editor = pref.edit()
+        recordValueTextView?.text = pref.getString(prefKey, "1")
+
+        Thread.sleep(1000)
+        btnStart?.performClick()
     }
 
     override fun onClick(v: View?) {
@@ -87,6 +100,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             else -> {}
         }
+        Thread.sleep(1000)
     }
 
     private fun answerDataAdd(n: Int) {
@@ -97,100 +111,98 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun playSound(n: Int) {
-        Thread.sleep(1000)
-        MediaPlayer.create(applicationContext, Sounds.entries[n-1].v).start()
+        sounds[n-1].start()
     }
 
-    private fun printToast(str: String) {
-        Toast.makeText(this, "Text of button: $str", Toast.LENGTH_SHORT).show()
-    }
-
+//    private fun printToast(str: String) {
+//        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+//    }
 
     private fun startGame() {
-        questionList = listOf()
-        answerList = mutableListOf()
+        questionList.clear()
+        answerList.clear()
         userTurn = false
-
         levelValue = 0
         passOneLevel()
     }
 
     private fun passOneLevel() {
-//        changeButtonsState(false)
-
         Thread.sleep(1000)
-        printToast("---=== NEW LEVEL ===---")
-        Thread.sleep(1000)
-
         levelValueTextView!!.text = levelValue.toString()
-
-        questionList = createRandomList(levelValue + 1)
-        playList(questionList)
+        createRandomList()
+        lifecycleScope.launch { playList(questionList) }
         ++levelValue
-
-        changeButtonsState(true)
+        userTurn = true
     }
 
     private fun changeButtonsState(state: Boolean) {
-        userTurn = state
         btn1?.isEnabled = state
-//        btn1?.isClickable = state
         btn2?.isEnabled = state
-//        btn2?.isClickable = state
         btn3?.isEnabled = state
-//        btn3?.isClickable = state
         btn4?.isEnabled = state
-//        btn4?.isClickable = state
     }
 
     private fun checkNewSymb() {
         for (i in 0..< answerList.size) {
             if(answerList.size > questionList.size || answerList[i] != questionList[i]) {
-                Toast.makeText(this, "FAIL, PLEASE TRY AGAIN!!", Toast.LENGTH_SHORT).show()
+                showScoreDialog(this)
                 userTurn = false
+                changeButtonsState(false)
                 updateData()
                 return
             }
         }
         if(answerList.size == questionList.size) {
             userTurn = false
-            answerList = mutableListOf()
-
             changeButtonsState(false)
+            answerList = mutableListOf()
             passOneLevel()
         }
     }
 
-
     private fun updateData() {
-        if(recordValue < levelValue)
-            recordValue = levelValue
-
+        if(levelValue > 0) levelValue--
+        if(recordValue < levelValue) recordValue = levelValue
+        if (recordValue > pref.getString(prefKey, "1")!!.toInt()) {
+            editor.putString(prefKey, recordValue.toString()).apply()
+        }
         levelValueTextView!!.text = levelValue.toString()
         recordValueTextView!!.text = recordValue.toString()
     }
 
-    private fun createRandomList(size: Int): List<Int> {
-        return List(size) { Random.nextInt(1, 5) }
+    private fun createRandomList() {
+        questionList.add(Random.nextInt(1, 5)) //(1..4).random())
     }
 
-    private fun playList(list: List<Int>) {
+    private suspend fun playList(list: List<Int>) {
+        changeButtonsState(false)
+        delay(1000)
         for(item in list) {
             val btn: androidx.appcompat.widget.AppCompatButton? = findViewById(Buttons.entries[item-1].v)
-
-            val thread = Thread {
-                printToast("new STATUS!!!")
-                btn?.isPressed = true
-            }
-            Thread.sleep(2000)
-            thread.start()
-
-            Thread.sleep(4000)
-
-            btn?.performClick();
-            btn?.isPressed = false
-            Thread.sleep(1000)
+            btn?.setBackgroundResource(ButtonsColor.entries[item-1].v)
+            playSound(item)
+            delay(1000)
+            btn?.setBackgroundResource(ButtonsColor.entries[item-1].s)
         }
+        changeButtonsState(true)
+    }
+
+    private fun showScoreDialog(context: Context) {
+        val builder = AlertDialog.Builder(context)
+            .setTitle("FAIL!!")
+            .setMessage("DO YOU WANT TO TRY AGAIN?")
+            .setPositiveButton("TRY AGAIN...") { _, _ ->
+                recreate()
+            }
+            .setCancelable(false)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        sounds.forEach{it.release()}
     }
 
     enum class Buttons(val v: Int) {
@@ -200,5 +212,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         BUTTON4(R.id.btn4),
     }
 
-
+    enum class ButtonsColor(val v: Int, val s: Int) {
+        BUTTON1(R.color.red, R.color.button1_color),
+        BUTTON2(R.color.orange, R.color.button2_color),
+        BUTTON3(R.color.blue, R.color.button3_color),
+        BUTTON4(R.color.green, R.color.button4_color),
+    }
 }

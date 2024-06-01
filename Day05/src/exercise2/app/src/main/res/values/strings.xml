@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">New Game</string>
+    <string name="btn1_value">1</string>
+    <string name="btn2_value">2</string>
+    <string name="btn3_value">3</string>
+    <string name="btn4_value">4</string>
+    <string name="btn_start_value">START</string>
+    <string name="level_value">Level:</string>
+    <string name="record_value">Record:</string>
+    <string name="default_value_0">0</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="free_game">Free Play</string>
+    <string name="game">New Game</string>
+    <string name="home">Home</string>
+    <string name="to_menu">To Menu</string>
+    <string name="menu">MENU</string>
+    <string name="where_we">And where we go now?</string>
+</resources>

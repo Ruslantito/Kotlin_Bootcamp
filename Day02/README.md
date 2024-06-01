@@ -1,176 +1,121 @@
-# Good day!  
+## Exercise 1: Emergency department
+You must determine if an incident happened in a specific zone.  
 
-It's time to get to know the different collections and their transformations better. The developers of Kotlin did their best to make working with data in collections as convenient as possible. Particularly pleased with the large number of different methods, the ability to make it even larger due to extensions, data classes, perfect for working with collections.  
-Also, let's pay a little attention to reading / writing from files.
+Here, we'll do things in OOP style (classes, fields and methods, etc.). 
 
-## Themes:
-- Collections
-- In/out: files
+**Advice!** This exercise looks huge, but don't panic, it's only at first glance. In general, you just need to describe some entities (zone, incident, incident types, etc.), organize input and use some mathematics to solve the "Is incident inside" problem.
 
-**Advice!** In the `codesamples` folder there are some examples of Collections transformations. Use them to complete exercises.
+**Advice!** In the `src/exercise1` folder, there is some code you can start with. In the `Incident.kt` file, there are two classes, united by meaning. Note, that in Kotlin you can place different entities (classes, functions, etc.) in one file.
 
-### Project: today we will work on features for a job search application
+**Advice!** The incident and zone entities are described below. You should use classes for them. As we said earlier, there is a `data class` feature, which you can use to describe incidents. But data classes were designed as lightweight classes, they have problems with inheritance. You should read where is better to use `data classe` or a classic class. Think about the zone and its types in the way of `inheritance`.
 
-There is a common case when a user needs to display data taken from different sources/entities. To do this, the presentation layer usually has special entities that have the fields and properties necessary for display, which are filled with data before display. At the same time, the transformation of some entities into others should not change the original values in any way (the principle of immutability).
+**Advice!** Use `enum` classes to make enumerations, for example - types of incidents.
 
-# Exercises
+### Incident description:
+- An incident is determined by two integer coordinates on the coordinate plane (in `Incident.kt` they are described as `x` and `y`)
+- An incident also has:
+  - Description
+  - Applicant's phone number - can be null (read documentation about the `nullable types`)
+  - A field corresponding to one of the 3 types of incidents (e.g. fire, gas leak, cat on the tree) - can be null
 
-**Requirement!** Please, make each exercise in a separate project. For example, `Day02/src/exercise1`, `Day02/src/exercise2`, `Day02/src/bonusexercise3`, etc. If the previous exercise is needed for the next one, just copy a project from the previous to the next folder and continue development within the next one.
+### Zone description:
+- There is a base Zone class
+- There are three particular zones: with a tetragon, triangular or round shape (representing figures on the coordinate plane). As said, it should be classes
+- Use inheritance to connect shaped zones with a base zone class
+- Each zone has a phone number. The base zone has a base phone number (with operator code 800)
+- Zones have a method to determine if an incident is within it. As zones have different shapes, think how to use inheritance to implement for each zone different calculations
 
-**Requirement!** Please, don't commit generated files and folders, such as `.idea`, `.out`, `.build`, `.gradle`, etc. In IntelliJ IDEA and Android Studio they are usually marked with orange/brown color. Commit and push to the origin only source code of your app. Delete generated files before commit or better add them to the `.gitignore` file in your project.
+**Input:**
+- All coordinates are entered in the form of two integer numbers separated by a semicolon. Example: 5;4
+- Enter zone params: the program automatically determines the shape of the zone according to the entered data:
+  - For a circle, the two things are entered divided by space: a center coordinate and radius. Example: 5;4 6
+  - For a triangle three coordinates are entered divided by spaces. Example: 5;4 3;6 2;5
+  - For a tetragon four coordinates are entered divided by spaces. Example: 5;4 3;6 2;5 5;9
+- Enter the coordinates of the point of the incident. When the program creates an Incident object, it must randomly take a description and a phone number from corresponding arrays in `utils` folder 
+- Wrong input causes an error
 
-**Requirement!** There is no need to download gradle. Please, use the IDE embedded one.
-
-## Exercise 1: List of companies
-A simple example of such object transformations is a preview list containing partial information about an object.  
-
-Create a collection of companies, each is described as follows:
-- Name
-- Field of activity (IT, Banking, Public services)
-- A list of vacancies, each contains information about the profession (Developer, QA, Project Manager, Analyst, Designer), level (junior, middle, senior) and the proposed salary level
-- Contacts
-
-You can take a list of companies from [file](data-samples/listOfCompanies.json)
-
-**Advice!** This `json` file can help you to figure out some types of company fields. But it can only be strings and numbers - `json` doesn't supply complicated types and won't help you with objects, enums and others! For example, the "salary" field is obviously of number type, but you should think what to use with the "field of activity" (remember type of incidents). 
-
-**Input:** in the console, a user selects the following filters sequentially: 
-- field of activity
-- profession
-- level for the candidate
-- salary level (there must be several forks)
-
-At each stage there is an option "All". For example, if you click "All" on the first stage, you'll choose all fields of activity and go to the next stage.  
-The user selects a number of chosen option. On an incorrect input, the program prints "It doesn't look like a correct input." and repeats an option.  
-
-**Output:** when all stages passed, the program prints to the console a list of vacancies, filtered according to the selected options.
+**Output:**
+- The program prints the full information about the zone and the incident. If the incident's phone is null, it shouldn't be printed (you can read about `?.let` construction to work with nullable types and use it)
+- The program prints if the incident is within the zone. If not, it advises to switch the applicant to the common number
 
 _Example:_
 ```
-Select a field of activity:
-1. IT
-2. Banking
-3. Public services
-4. All
+Enter zone parameters:
+3;4 2
 
-2
+The zone info:
+  The shape of zone: circle 
+  Phone number: 89347362826
 
-Banking. Select a profession:
-1. Developer
-2. QA
-3. Project Manager
-4. Analyst
-5. Designer
-6. All
+Enter an incident coordinates:
+9;9
 
-4
+The incident info:
+  Description: My cat can't get off the tree
+  Phone number: 74831743929
+  Type: cat on the tree
 
-Banking. Analyst. Select the level of a candidate:
-1. Junior 
-2. Middle
-3. Senior
-4. All
-
-1
-
-Banking. Analyst. Junior. Select a salary level:
-1. < 100000
-2. 100000 - 150000
-3. > 150000
-4. All
-
-1
-
-Banking. Analyst. Junior. < 100000
-The list of suitable vacancies:
-
-1.
-Junior Analyst     ---      80000
-  OOO SuperPay
-  Banking
----------------------------------------
-
-2. 
-Junior Analyst     ---      70000
-  MMM
-  Banking
----------------------------------------
-
-3.
-Junior Analyst     ---      100000
-  CryptoSuperGo
-  Banking
----------------------------------------
-...
-...
-...
+An incident is not in the zone
+Switch the applicant to the common number: 88008473824
 ```
 
-## Exercise 2: Parse a resume file
-Let's write a mechanism that allows you to import an information from a resume file
 
-A resume has the following template:
-- Candidate information block
-  - Full name
-  - Profession (the list of professions is same with one from the previous exercise)
-  - Sex
-  - Date of Birth
-  - Contacts (phone, e-mail)
-  - Willingness of relocation: preferable/possible/impossible
-- Block with information about education. For each educational institution:
-    - Type of education (for example: higher, secondary special, secondary)
-    - Years of education
-    - Description
-- Block with job experience. For each:
-    - Dates of work
-    - Company name
-    - Description
-- Block for some words in free form
+## Exercise 2: The Phone mask
+A phone mask is a useful UX feature that improves readability of phone numbers.  
+Read about extensions in Kotlin. Write an extension function to the String class that applies two different masks to a phone number:
+- It works with 11-digits numbers starting with 7 or 8, or with 12-digits numbers starting with +7:
+  - If the operator code is 800, the number is converted to the form "8 (800) xxx xx xx"
+  - For another operator, the mask is "+7 xxx xxx-xx-xx"
+  - Note, that besides brackets, spaces and hyphens are added, the first (country) digit also changes according to the mask. Example: 84352835724 converts to +7 435 283-57-24 
+- Other numbers are bypassed  
 
-Check the ready resume [input file](data-samples/resume.json).
-
-Create a data model (classes) corresponding to the resume template. Our program loads data from the file, recognizes template blocks and fill the corresponding objects with data
-
-**Input:** import data from the resume file (put it to `src/files`).
-
-**Output:** output the data from the created classes to the console. The data in the console and in the input file must be the same. 
-
-**Advice!** For example, you can keep data in program using `data class` and use its `toString()` method. Read about `toString()` and its advantages in `data class`, if you didn't.
-
-**Requirement!:** Think about data types of your fields in classes. For example, the "name" is obviously a string, the "date of birth" should be of a date type, the "contacts" has come fields inside - it should be another class. 
+**Check the result:** apply this extension in the previous exercise to display information about zone's and applicant's phones, then repeat the exercise check.
 
 _Example:_
 ```
-Block 1
-CandidateInfo(name=Vasiliev Sergei Petrovich, profession=QA, contacts=Contacts(phone=72938572843, email=vspetrovich@pochta.ru) ... )
 ...
 
-Block 2
-[Education(type=higher, ...), Education(type=secondary, ...)]
+The zone info:
+... 
+  Phone number: +7 934 736-28-26
 ...
+The incident info:
+...
+  Phone number: +7 483 264-85-73
+
+An incident is not in the zone
+Switch the applicant to the common number: 8 (800) 847 38 24
 ```
-## Bonus exercise 3: Seniority
-- The program is a combination of the ex1 and the ex2.
-- The program takes as input file a list with companies
-- To the candidate levels in [file](datasamples/listOfCompanies.json) add seniority (in years): for junior - 0, for middle - 3, for senior - 6
-- The program takes an input file with a resume and parse
-- The program prints a list of vacancies, suitable for the resume data (by the following two parameters): 
-  - match a profession from resume with professions in vacancies
-  - match an experience in years - count years and months from all places of work and match with a candidate seniority
+
+## Exercise 3: Processing server responses
+Assume, that we have a server for our app, and it returns a response to our requests. The response contains a response code and a message. There are a lot of different response codes - check the HTTP codes description.  
+In our app, according to the code, the answer can be classified into two types: Success and Error. It's a common case, where a sealed class can be used. Implement this logic with help of sealed class:
+- Success, if codes are 200 or 201. It has a message - string "The request processed successfully"
+- Error, codes from 400 and more, the message is JSON with the title and description of the error
+
+Also, errors from the server are different. Our app has classes for several errors. It's also a good case to be implemented with sealed class. Implement errors hierarchy:
+- There are 4 types of known internal errors (1000-1003). They have a code, a header and a description (for desc - think of it):
+  - 1000, "The user is not identified", desc
+  - 1001, "The session is expired", desc 
+  - 1002, "No connection", desc
+  - 1003, "The device has failed the verification", desc
+- The rest of the response codes (other than 200, 201, 1000-1003) are handled with a common "Unknown" error, which has the title "Error code: $code" and the description "Unknown error. Please, try again later"
+
+Finally, let's combine our responses and errors. The application needs a handler to recognize responses and types of errors. As you guessed, you should use Error sealed class as our Error response type.  
+The program must fail on non-integer input.
+
+**Input:** the server response code is entered into the console  
+**Output:** the program prints a type of the response (if an error, a concrete type of this error) and its information: code and message for Success or code, title and description for Error
 
 _Example:_
 ```
-The candidate:
-Name: Vasiliev Sergei Petrovich
-Profession: QA
-Experience: 1 year 5 months (junior)
-Suitable vacancies:
-OOO SoftForHomies
-Field of activity: IT
-Candidate level: junior
-Salary: 60000
-Contacts: 89785455654
-...
+Type a response code:
+1003
+
+NoConnectionError: 
+  Code: 1003
+  Title: No connection
+  Description: There is no internet connection. Try later.
 ```
 
-💡 [Tap here](https://forms.gle/ZTzuepYrgDpm2yhd8) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.
+💡 [Tap here](https://forms.gle/EmMtUu47HGP7kf7q6) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.

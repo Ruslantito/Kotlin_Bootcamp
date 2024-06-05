@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "exercise0"
+rootProject.name = "exercise1"
 include(":app")
 include(":circles")
 include(":primenumbers")

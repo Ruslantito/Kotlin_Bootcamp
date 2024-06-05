@@ -7,32 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".PrimenumbersFragment">
 
+
     <TextView
         android:id="@+id/order_lb_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="168dp"
-        android:labelFor="@id/order_editTextNumSign"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="200dp"
+        android:labelFor="@id/mode_radioGroup"
         android:text="@string/the_grouping_order_is"
         android:textColor="@color/design_default_color_on_secondary"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/order_editTextNumSign"
-        android:layout_width="75dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="15dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="text"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_lb_textView" />
 
+    <RadioGroup
+        android:id="@+id/mode_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="60dp"
+        android:checkedButton="@+id/radio_lower"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_lb_textView">
+
+        <RadioButton
+            android:id="@+id/radio_lower"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/lower"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radio_higher"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/higher"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/enter_nr_lb_textView"
@@ -44,13 +68,13 @@
         android:textColor="@color/design_default_color_on_secondary"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/order_lb_textView"
-        app:layout_constraintTop_toBottomOf="@+id/order_editTextNumSign" />
+        app:layout_constraintTop_toBottomOf="@+id/mode_radioGroup" />
 
     <EditText
         android:id="@+id/enter_nr_editTextNumSign"
-        android:layout_width="75dp"
+        android:layout_width="200dp"
         android:layout_height="48dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
         android:autofillHints=""
         android:ems="10"
@@ -59,28 +83,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_nr_lb_textView" />
 
-    <TextView
-        android:id="@+id/result_lb_textView"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn_calculate"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="@string/result"
-        android:textColor="@color/design_default_color_on_secondary"
+        android:layout_marginTop="60dp"
+        android:text="@string/calculate"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/enter_nr_lb_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_nr_editTextNumSign" />
 
     <TextView
         android:id="@+id/result_textView"
-        android:layout_width="270dp"
-        android:layout_height="94dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="10dp"
-        android:textAlignment="textEnd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
         android:textColor="@color/design_default_color_on_secondary"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_lb_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

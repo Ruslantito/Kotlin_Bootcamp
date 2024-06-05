@@ -1,11 +1,19 @@
 package com.example.primenumbers
 
+//import android.R
+import com.example.primenumbers.R
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.primenumbers.databinding.FragmentPrimenumbersBinding
+import kotlin.math.pow
+
 
 class PrimenumbersFragment : Fragment() {
     private lateinit var binding: FragmentPrimenumbersBinding
@@ -16,13 +24,56 @@ class PrimenumbersFragment : Fragment() {
         binding = FragmentPrimenumbersBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
+    var mode: String = "lower"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.modeRadioGroup.setOnCheckedChangeListener { _, id ->
+            when(id) {
+                R.id.radio_lower -> mode = "lower"
+                R.id.radio_higher -> mode = "higher"
+            }
+        }
 
-        //        MAIN.setTitleAndArrowVisibility("FREE PLAY", true)
+        binding.btnCalculate.setOnClickListener {
+            if(checkFieldsOk()) process(mode)
+        }
     }
 
 
+    private fun process(mode: String) {
+        var numb = binding.enterNrEditTextNumSign.text.toString()
+        if(mode == "lower") {
+            numb = numb.reversed()
+        }
+        readNum(numb.toInt(), numb.length)
+    }
+
+    private fun readNum(numb: Int, length: Int) {
+        val textResult = StringBuilder()
+        textResult.append("Result:")
+        textResult.append("\n")
+        val step = 10f
+        for (i in length downTo 1) {
+            val tmp: Int = (numb / (step).pow(i-1)).toInt()
+            if(isPrime(tmp)) textResult.append("$tmp - prime")
+            else textResult.append("$tmp")
+            textResult.append("\n")
+        }
+        binding.resultTextView.text = textResult
+    }
+
+    private fun isPrime(numb: Int): Boolean {
+        var i = 2
+        while (i < numb / 2) {
+            if (numb % i == 0) return false
+            i++
+        }
+        return true
+    }
+
+    private fun checkFieldsOk(): Boolean {
+        return binding.enterNrEditTextNumSign.text.isNotEmpty()
+    }
 
 }

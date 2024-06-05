@@ -1,7 +1,16 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string-array name="prime_mode">
+        <item>higher</item>
+        <item>lower</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="the_grouping_order_is">The grouping order is:</string>
     <string name="enter_a_number">Enter a number:</string>
     <string name="result">Result:</string>
+    <string name="calculate">Calculate</string>
+    <string name="lower">lower</string>
+    <string name="higher">higher</string>
+
 </resources>

@@ -117,5 +117,3 @@ NoConnectionError:
   Title: No connection
   Description: There is no internet connection. Try later.
 ```
-
-💡 [Tap here](https://forms.gle/EmMtUu47HGP7kf7q6) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.

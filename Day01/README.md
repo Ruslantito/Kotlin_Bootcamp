@@ -123,5 +123,3 @@ exit
 
 Bye!
 ```
-
-💡 [Tap here](https://forms.gle/4LxkKv2KoPP5aCgN9) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.

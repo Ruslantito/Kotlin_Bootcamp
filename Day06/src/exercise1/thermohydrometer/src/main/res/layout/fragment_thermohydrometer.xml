@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ThermohydrometerFragment">
+
+    <TextView
+        android:id="@+id/output_mode_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="120dp"
+        android:labelFor="@id/output_mode_editTextNumSign"
+        android:text="Output mode:"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/output_mode_editTextNumSign"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/output_mode_lb_textView" />
+
+    <TextView
+        android:id="@+id/enter_season_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/enter_season_editTextNumSign"
+        android:text="Enter a season - (W)inter or (S)ummer:"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/output_mode_editTextNumSign" />
+
+    <EditText
+        android:id="@+id/enter_season_editTextNumSign"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_season_lb_textView" />
+
+
+    <TextView
+        android:id="@+id/enter_temp_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/enter_temp_editTextNumSign"
+        android:text="Season: Winter. Enter a temperature:"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/output_mode_lb_textView"
+        app:layout_constraintTop_toBottomOf="@+id/enter_season_editTextNumSign" />
+
+    <EditText
+        android:id="@+id/enter_temp_editTextNumSign"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="15dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_temp_lb_textView" />
+
+
+
+    <TextView
+        android:id="@+id/enter_humidity_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/enter_humidity_editTextNumSign"
+        android:text="Enter humidity:"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/output_mode_lb_textView"
+        app:layout_constraintTop_toBottomOf="@+id/enter_temp_editTextNumSign" />
+
+    <EditText
+        android:id="@+id/enter_humidity_editTextNumSign"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="15dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_humidity_lb_textView" />
+
+
+    <TextView
+        android:id="@+id/result_textView"
+        android:layout_width="270dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_humidity_editTextNumSign" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

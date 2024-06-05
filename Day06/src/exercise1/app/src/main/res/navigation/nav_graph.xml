@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.exercise0.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_circlesFragment"
+            app:destination="@id/circlesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_primenumbersFragment"
+            app:destination="@id/primenumbersFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_thermohydrometerFragment"
+            app:destination="@id/thermohydrometerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/circlesFragment"
+        android:name="com.example.circles.CirclesFragment"
+        android:label="CirclesFragment" >
+        <action
+            android:id="@+id/action_circlesFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/primenumbersFragment"
+        android:name="com.example.primenumbers.PrimenumbersFragment"
+        android:label="PrimenumbersFragment" >
+        <action
+            android:id="@+id/action_primenumbersFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thermohydrometerFragment"
+        android:name="com.example.thermohydrometer.ThermohydrometerFragment"
+        android:label="ThermohydrometerFragment" >
+        <action
+            android:id="@+id/action_thermohydrometerFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+
+</navigation>

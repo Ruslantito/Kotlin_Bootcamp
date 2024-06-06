@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CirclesFragment">
+
+    <TextView
+        android:id="@+id/circle1_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="200dp"
+        android:text="@string/circle_1"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/x1_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="25dp"
+        android:labelFor="@id/circle1_x_editTextNumSign"
+        android:text="@string/x"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle1_textView" />
+
+    <EditText
+        android:id="@+id/circle1_x_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/x1_textView"
+        app:layout_constraintTop_toBottomOf="@+id/circle1_textView" />
+
+    <TextView
+        android:id="@+id/y1_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/circle1_y_editTextNumSign"
+        android:text="@string/y"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/x1_textView"
+        app:layout_constraintTop_toBottomOf="@+id/x1_textView" />
+
+    <EditText
+        android:id="@+id/circle1_y_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/circle1_x_editTextNumSign"
+        app:layout_constraintTop_toBottomOf="@+id/circle1_x_editTextNumSign" />
+
+    <TextView
+        android:id="@+id/r1_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:labelFor="@id/circle1_r_editTextNumSign"
+        android:text="@string/r"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/circle1_y_editTextNumSign"
+        app:layout_constraintTop_toTopOf="@+id/y1_textView" />
+
+    <EditText
+        android:id="@+id/circle1_r_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/r1_textView"
+        app:layout_constraintTop_toBottomOf="@+id/circle1_x_editTextNumSign" />
+
+    <TextView
+        android:id="@+id/circle2_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/circle_2"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/circle1_textView"
+        app:layout_constraintTop_toBottomOf="@+id/circle1_y_editTextNumSign" />
+
+    <TextView
+        android:id="@+id/x2_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:labelFor="@id/circle2_x_editTextNumSign"
+        android:text="@string/x"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/y1_textView"
+        app:layout_constraintTop_toBottomOf="@+id/circle2_textView" />
+
+    <EditText
+        android:id="@+id/circle2_x_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/circle1_y_editTextNumSign"
+        app:layout_constraintTop_toBottomOf="@+id/circle2_textView" />
+
+
+    <TextView
+        android:id="@+id/y2_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/circle2_y_editTextNumSign"
+        android:text="@string/y"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/x2_textView"
+        app:layout_constraintTop_toBottomOf="@+id/x2_textView" />
+
+    <EditText
+        android:id="@+id/circle2_y_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/circle2_x_editTextNumSign"
+        app:layout_constraintTop_toBottomOf="@+id/circle2_x_editTextNumSign" />
+
+    <TextView
+        android:id="@+id/r2_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/circle2_r_editTextNumSign"
+        android:text="@string/r"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/r1_textView"
+        app:layout_constraintTop_toTopOf="@+id/y2_textView" />
+
+    <EditText
+        android:id="@+id/circle2_r_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/circle1_r_editTextNumSign"
+        app:layout_constraintTop_toTopOf="@+id/circle2_y_editTextNumSign" />
+
+    <Button
+        android:id="@+id/btn_calculate"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/calculate"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle2_r_editTextNumSign" />
+
+    <TextView
+        android:id="@+id/result_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="24dp"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

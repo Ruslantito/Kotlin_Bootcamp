@@ -19,8 +19,9 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "exercise1"
+rootProject.name = "exercise2"
 include(":app")
 include(":circles")
 include(":primenumbers")
 include(":thermohydrometer")
+include(":logger")

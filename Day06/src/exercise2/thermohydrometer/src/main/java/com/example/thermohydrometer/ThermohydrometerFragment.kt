@@ -73,11 +73,11 @@ class ThermohydrometerFragment : Fragment() {
             tempTo = 22
         }
 
-        textResult.append("\n")
+        textResult.appendLine()
         textResult.append("The temperature is $temperature ˚C")
-        textResult.append("\n")
+        textResult.appendLine()
         textResult.append("The comfortable temperature is from $tempFrom to $tempTo ˚C.")
-        textResult.append("\n")
+        textResult.appendLine()
 
         if(temperature < tempFrom)
             textResult.append("Please, make it warmer by ${convertTemperature(tempFrom - temperature, unit)} degrees.")
@@ -85,7 +85,7 @@ class ThermohydrometerFragment : Fragment() {
             textResult.append("Please, make it colder by ${convertTemperature(temperature - tempTo, unit)} degrees.")
         else
             textResult.append("The temperature is comfortable")
-        textResult.append("\n")
+        textResult.appendLine()
     }
 
     private fun checkHumidity(humidity: Float, season: String) {
@@ -93,9 +93,9 @@ class ThermohydrometerFragment : Fragment() {
         var humidityTo = 60
         if(season.lowercase() == "winter") humidityTo = 45
 
-        textResult.append("\n")
+        textResult.appendLine()
         textResult.append("The comfortable humidity is from $humidityFrom% to $humidityTo%.")
-        textResult.append("\n")
+        textResult.appendLine()
 
         if(humidity < humidityFrom)
             textResult.append("Please, make it increase by ${humidityFrom - humidity}%.")
@@ -103,7 +103,7 @@ class ThermohydrometerFragment : Fragment() {
             textResult.append("Please, make it decrease by ${humidity - humidityTo}%.")
         else
             textResult.append("The humidity is comfortable")
-        textResult.append("\n")
+        textResult.appendLine()
     }
 
     private fun checkFieldsOk(): Boolean {

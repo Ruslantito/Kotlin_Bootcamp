@@ -1,13 +1,14 @@
 package com.example.thermohydrometer
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.loggerMod.FragmentExtensionLogger
+import com.example.loggerMod.LoggerMod
 import com.example.thermohydrometer.databinding.FragmentThermohydrometerBinding
 
-class ThermohydrometerFragment : Fragment() {
+class ThermohydrometerFragment : FragmentExtensionLogger() {
     private lateinit var binding: FragmentThermohydrometerBinding
     private val textResult = StringBuilder()
 
@@ -15,17 +16,19 @@ class ThermohydrometerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        LoggerMod.i(TAG, "Fragment onCreateView")
         binding = FragmentThermohydrometerBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        LoggerMod.i(TAG, "Fragment onViewCreated")
         var outputMode = "celsius"
         var seasonMode = "winter"
 
         binding.outputModeRadioGroup.setOnCheckedChangeListener { _, id ->
+            LoggerMod.i(TAG, "Fragment: outputModeRadioGroup.setOnCheckedChangeListener")
             when(id) {
                 R.id.radio_celsius -> outputMode = "Celsius"
                 R.id.radio_kelvin -> outputMode = "Kelvin"
@@ -34,6 +37,7 @@ class ThermohydrometerFragment : Fragment() {
         }
 
         binding.seasonModeRadioGroup.setOnCheckedChangeListener { _, id ->
+            LoggerMod.i(TAG, "Fragment: seasonModeRadioGroup.setOnCheckedChangeListener")
             when(id) {
                 R.id.radio_winter -> seasonMode = "Winter"
                 R.id.radio_summer -> seasonMode = "Summer"
@@ -41,6 +45,7 @@ class ThermohydrometerFragment : Fragment() {
         }
 
         binding.btnCalculate.setOnClickListener {
+            LoggerMod.i(TAG, "Fragment: btnCalculate.setOnClickListener")
             if(checkFieldsOk()) {
                 process(seasonMode, outputMode)
                 binding.resultTextView.text = textResult
@@ -110,5 +115,4 @@ class ThermohydrometerFragment : Fragment() {
         return binding.enterHumidityEditTextNumSign.text.isNotEmpty() &&
                 binding.enterTempEditTextNumSign.text.isNotEmpty()
     }
-
 }

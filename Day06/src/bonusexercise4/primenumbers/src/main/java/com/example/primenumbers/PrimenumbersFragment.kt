@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.example.loggerMod.FragmentExtensionLogger
+import com.example.loggerMod.LoggerMod
 import com.example.primenumbers.databinding.FragmentPrimenumbersBinding
 import kotlin.math.pow
 
-
-class PrimenumbersFragment : Fragment() {
+class PrimenumbersFragment : FragmentExtensionLogger() {
     private lateinit var binding: FragmentPrimenumbersBinding
     private var mode: String = "lower"
 
@@ -17,14 +17,16 @@ class PrimenumbersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        LoggerMod.i(TAG, "Fragment onCreateView")
         binding = FragmentPrimenumbersBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        LoggerMod.i(TAG, "Fragment onViewCreated")
         binding.modeRadioGroup.setOnCheckedChangeListener { _, id ->
+            LoggerMod.i(TAG, "Fragment: modeRadioGroup.setOnCheckedChangeListener")
             when(id) {
                 R.id.radio_lower -> mode = "lower"
                 R.id.radio_higher -> mode = "higher"
@@ -32,7 +34,10 @@ class PrimenumbersFragment : Fragment() {
         }
 
         binding.btnCalculate.setOnClickListener {
-            if(checkFieldsOk()) process(mode)
+            if(checkFieldsOk()) {
+                LoggerMod.i(TAG, "Fragment: btnCalculate.setOnClickListener")
+                process(mode)
+            }
         }
     }
 
@@ -70,5 +75,4 @@ class PrimenumbersFragment : Fragment() {
     private fun checkFieldsOk(): Boolean {
         return binding.enterNrEditTextNumSign.text.isNotEmpty()
     }
-
 }

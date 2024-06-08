@@ -47,13 +47,13 @@ class PrimenumbersFragment : Fragment() {
     private fun readNum(numb: Int, length: Int) {
         val textResult = StringBuilder()
         textResult.append("Result:")
-        textResult.append("\n")
+        textResult.appendLine()
         val step = 10f
         for (i in length downTo 1) {
             val tmp: Int = (numb / (step).pow(i-1)).toInt()
             if(isPrime(tmp)) textResult.append("$tmp - prime")
             else textResult.append("$tmp")
-            textResult.append("\n")
+            textResult.appendLine()
         }
         binding.resultTextView.text = textResult
     }

@@ -1,0 +1,9 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="transform">Transform</string>
+    <string name="write_a_number">Please enter a number and we will convert this number into words</string>
+    <string name="number">Number</string>
+    <string name="number_out_of_limits">Number out of limits, try again...\nThe number should be in the intervals from -1000000000 to 1000000000</string>
+    <string name="please_enter_the_number">Please enter the number...</string>
+</resources>

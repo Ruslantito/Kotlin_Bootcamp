@@ -1,0 +1,14 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calculate">Calculate</string>
+    <string name="summer">Summer</string>
+    <string name="winter">Winter</string>
+    <string name="enter_a_temperature">Enter a temperature:</string>
+    <string name="enter_a_season">Enter a season:</string>
+    <string name="output_mode">Output mode:</string>
+    <string name="enter_humidity">Enter humidity:</string>
+    <string name="celsius">Celsius</string>
+    <string name="kelvin">Kelvin</string>
+    <string name="fahrenheit">Fahrenheit</string>
+</resources>

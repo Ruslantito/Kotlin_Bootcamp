@@ -1,0 +1,22 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_a_number">Enter a number</string>
+    <string name="factorial">Factorial</string>
+    <string name="sqrt">SQRT</string>
+    <string name="logarithms">lg/Ln</string>
+    <string name="pow">POW</string>
+    <string name="prime">PRIME</string>
+    <string name="transform">Transform</string>
+    <string name="xFactorial">x!=</string>
+    <string name="sqrt2">√x=</string>
+    <string name="sqrt3">³√x=</string>
+    <string name="lg_x">lg(x)=</string>
+    <string name="ln_x">ln(x)=</string>
+    <string name="xpow2">x²=</string>
+    <string name="xpow3">x³=</string>
+    <string name="run_all">Run All</string>
+    <string name="run">Run</string>
+    <string name="is_it_prime">is it prime?</string>
+    <string name="cancel">Cancel</string>
+</resources>

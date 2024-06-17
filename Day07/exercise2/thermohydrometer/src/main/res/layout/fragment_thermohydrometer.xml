@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ThermohydrometerFragment">
+
+    <TextView
+        android:id="@+id/output_mode_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="150dp"
+        android:labelFor="@id/output_mode_radioGroup"
+        android:text="@string/output_mode"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/output_mode_radioGroup"
+        android:layout_width="368dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="60dp"
+        android:checkedButton="@+id/radio_celsius"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/output_mode_lb_textView">
+
+        <RadioButton
+            android:id="@+id/radio_celsius"
+            android:layout_width="35dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/celsius"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radio_kelvin"
+            android:layout_width="30dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/kelvin"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radio_fahrenheit"
+            android:layout_width="50dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/fahrenheit"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/enter_season_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/season_mode_radioGroup"
+        android:text="@string/enter_a_season"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/output_mode_lb_textView"
+        app:layout_constraintTop_toBottomOf="@+id/output_mode_radioGroup" />
+
+
+    <RadioGroup
+        android:id="@+id/season_mode_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="60dp"
+        android:checkedButton="@+id/radio_winter"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_season_lb_textView">
+
+        <RadioButton
+            android:id="@+id/radio_winter"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/winter"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radio_summer"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="@string/summer"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/enter_temp_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:labelFor="@id/enter_temp_editTextNumSign"
+        android:text="@string/enter_a_temperature"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/output_mode_lb_textView"
+        app:layout_constraintTop_toBottomOf="@+id/season_mode_radioGroup" />
+
+    <EditText
+        android:id="@+id/enter_temp_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintStart_toEndOf="@+id/enter_temp_lb_textView"
+        app:layout_constraintTop_toBottomOf="@+id/season_mode_radioGroup" />
+
+    <TextView
+        android:id="@+id/enter_humidity_lb_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:labelFor="@id/enter_humidity_editTextNumSign"
+        android:text="@string/enter_humidity"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/output_mode_lb_textView"
+        app:layout_constraintTop_toBottomOf="@+id/enter_temp_editTextNumSign" />
+
+    <EditText
+        android:id="@+id/enter_humidity_editTextNumSign"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintStart_toStartOf="@+id/enter_temp_editTextNumSign"
+        app:layout_constraintTop_toBottomOf="@+id/enter_temp_editTextNumSign" />
+
+    <Button
+        android:id="@+id/btn_calculate"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/calculate"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_humidity_editTextNumSign" />
+
+
+    <TextView
+        android:id="@+id/result_textView"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

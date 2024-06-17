@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SupercalculationsFragment">
+
+    <TextView
+        android:id="@+id/title_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:gravity="center"
+        android:labelFor="@id/number_editTextNumSign"
+        android:text="@string/enter_a_number"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/number_editTextNumSign"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="51dp"
+        android:autofillHints=""
+        android:background="#9AFDD835"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="numberSigned"
+        android:maxLength="11"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_textView" />
+
+    <Button
+        android:id="@+id/btn_factorial"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:text="@string/run"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number_editTextNumSign" />
+
+    <TextView
+        android:id="@+id/factorial_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/factorial_textView"
+        android:text="@string/xFactorial"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/btn_factorial"
+        app:layout_constraintTop_toTopOf="@+id/btn_factorial" />
+
+    <TextView
+        android:id="@+id/factorial_textView"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="18dp"
+        android:background="@color/orange_light"
+        android:gravity="center"
+        android:singleLine="false"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/factorial_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_factorial" />
+
+    <Button
+        android:id="@+id/btn_sqrt"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:text="@string/run"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/btn_factorial"
+        app:layout_constraintTop_toBottomOf="@+id/btn_factorial" />
+
+    <TextView
+        android:id="@+id/sqrt2_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/sqrt2_textView"
+        android:text="@string/sqrt2"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/factorial_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_sqrt" />
+
+    <TextView
+        android:id="@+id/sqrt2_textView"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:background="@color/orange_light"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/factorial_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_sqrt" />
+
+    <TextView
+        android:id="@+id/sqrt3_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/sqrt3_textView"
+        android:text="@string/sqrt3"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/sqrt2_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_sqrt" />
+
+    <TextView
+        android:id="@+id/sqrt3_textView"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@color/orange_light"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ln_textView"
+        app:layout_constraintTop_toTopOf="@+id/sqrt2_textView" />
+
+    <Button
+        android:id="@+id/btn_logarithms"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:text="@string/run"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/btn_sqrt"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sqrt" />
+
+    <TextView
+        android:id="@+id/log_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/log_textView"
+        android:text="@string/lg_x"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/sqrt2_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_logarithms" />
+
+
+    <TextView
+        android:id="@+id/log_textView"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:background="@color/orange_light"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/sqrt2_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_logarithms" />
+
+    <TextView
+        android:id="@+id/ln_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/ln_textView"
+        android:text="@string/ln_x"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/sqrt3_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_logarithms" />
+
+    <TextView
+        android:id="@+id/ln_textView"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@color/orange_light"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ln_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/log_textView" />
+
+    <Button
+        android:id="@+id/btn_pow"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:text="@string/run"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/btn_logarithms"
+        app:layout_constraintTop_toBottomOf="@+id/btn_logarithms" />
+
+    <TextView
+        android:id="@+id/pow2_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/pow2_textView"
+        android:text="@string/xpow2"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/log_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_pow" />
+
+
+    <TextView
+        android:id="@+id/pow2_textView"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:background="@color/orange_light"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/log_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_pow" />
+
+
+    <TextView
+        android:id="@+id/pow3_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/pow3_textView"
+        android:text="@string/xpow3"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pow2_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/pow3_textView" />
+
+    <TextView
+        android:id="@+id/pow3_textView"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/orange_light"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pow2_textView"
+        app:layout_constraintTop_toBottomOf="@+id/pow2_textView" />
+
+    <Button
+        android:id="@+id/btn_prime"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/button"
+        android:text="@string/run"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/btn_pow"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pow" />
+
+    <TextView
+        android:id="@+id/prime_lbl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@id/prime_textView"
+        android:text="@string/is_it_prime"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pow2_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_prime" />
+
+
+    <TextView
+        android:id="@+id/prime_textView"
+        android:layout_width="182dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@color/orange_light"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/prime_lbl_textView"
+        app:layout_constraintTop_toTopOf="@+id/btn_prime" />
+
+    <Button
+        android:id="@+id/btn_runall"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button"
+        android:text="@string/run"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/btn_prime"
+        app:layout_constraintTop_toBottomOf="@+id/btn_prime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-class GetData(private val data: Data<Company>) {
+class GetDataCompany(private val data: Data<Company>) {
     fun getDataList(): List<CompanyInfoShort> {
         val companies = data.getList()
         val companiesShortInfo = mutableListOf<CompanyInfoShort>()
